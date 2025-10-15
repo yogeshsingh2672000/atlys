@@ -55,6 +55,7 @@ export default function Login() {
 
     const user = { email: isDemo ? 'demo@example.com' : match?.email, name: match?.name }
     localStorage.setItem('auth:user', JSON.stringify(user))
+    window.dispatchEvent(new Event('auth:changed'))
     navigate('/', { replace: true })
   }
 

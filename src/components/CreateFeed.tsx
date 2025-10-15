@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react'
+import { useAuthGate } from '@components/AuthGate'
 import ToolbarButton from '@ui/ToolbarButton'
 import FooterIcon from '@ui/FooterIcon'
 
@@ -17,6 +18,7 @@ type Props = {
 
 export default function CreateFeed({ feedItems, setFeedItems }: Props) {
   const [text, setText] = useState('')
+  const { requireAuth } = useAuthGate()
 
   const notImplemented = (e?: React.MouseEvent) => {
     e?.preventDefault()
@@ -140,7 +142,7 @@ export default function CreateFeed({ feedItems, setFeedItems }: Props) {
         </div>
 
         <button
-          onClick={onSend}
+          onClick={() => requireAuth(onSend)}
           disabled={!text.trim()}
           className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-4 py-2 text-white shadow hover:bg-indigo-700 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed transition"
         >

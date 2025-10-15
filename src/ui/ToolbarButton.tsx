@@ -1,4 +1,5 @@
 import React from 'react'
+import { useAuthGate } from '@components/AuthGate'
 
 type ToolbarButtonProps = {
   children: React.ReactNode
@@ -8,8 +9,14 @@ type ToolbarButtonProps = {
 
 
 export default function ToolbarButton({ children, onClick, label, ...rest }: ToolbarButtonProps) {
+  const { requireAuth } = useAuthGate()
   return (
-    <button {...rest} className="cursor-pointer h-9 w-9 rounded-lg text-slate-600 ring-1 ring-slate-200 hover:bg-slate-100 grid place-items-center active:scale-95 transition" title={label}>
+    <button
+      {...rest}
+      onClick={(e) => requireAuth(() => onClick?.(e))}
+      className="cursor-pointer h-9 w-9 rounded-lg text-slate-600 ring-1 ring-slate-200 hover:bg-slate-100 grid place-items-center active:scale-95 transition"
+      title={label}
+    >
       {children}
     </button>
   )

@@ -47,6 +47,7 @@ export default function Signup() {
 
     const user = { name, email }
     localStorage.setItem('auth:user', JSON.stringify(user))
+    window.dispatchEvent(new Event('auth:changed'))
     navigate('/', { replace: true })
   }
 
