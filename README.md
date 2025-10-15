@@ -1,6 +1,6 @@
 # Atlys UI — React + TypeScript + Tailwind
 
-Live demo: `https://atlys-flame.vercel.app/`
+Live demo: [https://atlys-flame.vercel.app/](https://atlys-flame.vercel.app/)
 
 This project implements a small social feed UI with:
 - Comment card UI and a “Create Feed” composer
