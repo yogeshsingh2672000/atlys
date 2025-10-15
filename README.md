@@ -1,73 +1,57 @@
-# React + TypeScript + Vite
+# Atlys UI — React + TypeScript + Tailwind
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live demo: `https://atlys-flame.vercel.app/`
 
-Currently, two official plugins are available:
+This project implements a small social feed UI with:
+- Comment card UI and a “Create Feed” composer
+- Login/Signup (client-only) with validations
+- Session-scoped signup storage (sessionStorage) and demo logins
+- Route-based pages with React Router
+- Tailwind-only styles and micro-interactions
+- Auth gate modal prompting login on interactive CTAs when unauthenticated
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Quickstart
+```bash
+npm i
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Build & preview production:
+```bash
+npm run build
+npm run preview
 ```
+
+## Credentials
+- demo@example.com / password123
+- test@user.com / testpass
+
+Signing up creates a user in `sessionStorage` under `auth:users` and logs in by writing `auth:user` to `localStorage`.
+
+## Structure
+- `@ui/` atoms → `@components/` → `@pages/`
+- Aliases are configured in Vite and TS:
+  - `@ui/*` → `src/ui/*`
+  - `@components/*` → `src/components/*`
+  - `@pages/*` → `src/pages/*`
+  - `@data/*` → `src/data/*`
+
+Key files:
+- `src/components/CreateFeed.tsx` — composer with toolbar, counter, and send
+- `src/components/FeedCard.tsx` — feed item card
+- `src/components/AuthGate.tsx` — modal + `requireAuth`
+- `src/pages/Login.tsx`, `src/pages/Signup.tsx` — forms with validation
+- `src/pages/Dashboard.tsx` or `src/pages/Feed.tsx` — renders the feed
+- `src/components/Header.tsx` — sticky header; Login link hidden when authed
+
+## Auth gating behavior
+- All interactive CTAs call `requireAuth(action?)`.
+- If not logged in, an in-app modal asks the user to log in; after login, it closes automatically via a custom `auth:changed` event and storage listeners.
+
+## Development notes
+- Tailwind v4 (via `@tailwindcss/vite`) is used for styling and animations.
+- React Router v6+ handles routes in `src/App.tsx`.
+- TypeScript is strict; build with `npm run build`.
+
+---
+Deployed to Vercel: `https://atlys-flame.vercel.app/`
