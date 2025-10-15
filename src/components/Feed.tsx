@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import FeedCard from '@components/FeedCard'
 import initialFeedItems from '@data/index'
 import CreateFeed from '@components/CreateFeed'
