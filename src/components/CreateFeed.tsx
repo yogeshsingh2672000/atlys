@@ -13,7 +13,7 @@ type FeedItem = {
   id: number
   avatarUrl: string
   author: string
-  timeAgo: string
+  timeAgo: number
   text: string
 }
 
@@ -45,7 +45,7 @@ export default function CreateFeed({ feedItems, setFeedItems }: Props) {
       avatarUrl:
         'https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=200&auto=format&fit=crop',
       author: 'You',
-      timeAgo: 'just now',
+      timeAgo: Date.now(),
       text: content,
     }
     setFeedItems(prev => [newItem, ...prev])

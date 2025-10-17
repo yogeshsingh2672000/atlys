@@ -3,11 +3,12 @@ import Avatar from '@ui/Avatar'
 import EmojiBadge from '@ui/EmojiBadge'
 import IconButton from '@ui/IconButton'
 import { Name, Timestamp, Paragraph } from '@ui/Text'
+import TimeAgo from '@ui/TimeAgo'
 
 type FeedCardProps = {
   avatarUrl: string
   author: string
-  timeAgo: string
+  timeAgo: number | string
   text: string
 }
 
@@ -28,7 +29,13 @@ export default function FeedCard({ avatarUrl, author, timeAgo, text }: FeedCardP
             <div className="flex-1">
               <div className="flex flex-col">
                 <Name>{author}</Name>
-                <Timestamp>{timeAgo}</Timestamp>
+                <Timestamp>
+                  {typeof timeAgo === 'number' ? (
+                    <TimeAgo epochMs={timeAgo} />
+                  ) : (
+                    timeAgo
+                  )}
+                </Timestamp>
               </div>
             </div>
           </div>

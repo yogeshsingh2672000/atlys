@@ -7,7 +7,7 @@ interface FeedItem {
   id: number
   avatarUrl: string
   author: string
-  timeAgo: string
+  timeAgo: number
   text: string
 }
 

@@ -30,7 +30,8 @@
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
       "@data/*": ["src/data/*"],
-      "@svgs/*": ["src/components/svgs/*"]
+      "@svgs/*": ["src/components/svgs/*"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": ["src"]
