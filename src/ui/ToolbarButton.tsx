@@ -15,7 +15,7 @@ export default function ToolbarButton({ children, onClick, label, className = ''
     <button
       {...rest}
       onClick={(e) => requireAuth(() => onClick?.(e))}
-      className={`cursor-pointer h-9 w-9 rounded-lg text-slate-600 ring-1 ring-slate-200 hover:bg-slate-100 grid place-items-center active:scale-95 transition ${className}`}
+      className={`cursor-pointer h-9 w-9 rounded-lg text-slate-600 grid place-items-center active:scale-95 transition ${className}`}
       title={label}
     >
       {children}

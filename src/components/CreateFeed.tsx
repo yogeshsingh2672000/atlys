@@ -5,6 +5,9 @@ import FooterIcon from '@ui/FooterIcon'
 import UploadIcon from '@svgs/Upload'
 import MicIcon from '@svgs/MicIcon'
 import VideoIcon from '@svgs/VideoIcon'
+import ListBulletedIcon from './svgs/ListBulletedIcon'
+import ListNumberedIcon from './svgs/ListNumberedIcon'
+import QuotesIcon from './svgs/QuotesIcon'
 
 type FeedItem = {
   id: number
@@ -53,49 +56,45 @@ export default function CreateFeed({ feedItems, setFeedItems }: Props) {
     <div className="w-full max-w-[720px] rounded-3xl bg-white p-3 shadow-xl ring-1 ring-black/5">
       {/* Toolbar */}
       <div className="flex items-center gap-2 px-2 pb-2">
+
+        <div className='flex gap-1 bg-gray-100 p-1 rounded-lg'>
         {/* Paragraph dropdown */}
         <button
           onClick={notImplemented}
-          className="cursor-pointer h-9 rounded-lg border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 hover:bg-slate-50 active:scale-[0.98] transition shadow-sm"
+          className="cursor-pointer mr-6 h-9 rounded-lg border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 hover:bg-slate-50 active:scale-[0.98] transition shadow-sm"
         >
           Paragraph ▾
         </button>
+            {/* Formatting buttons */}
+            <ToolbarButton onClick={notImplemented} label="bold" className="bg-gray-100 hover:bg-white">
+              <span className="font-semibold">B</span>
+            </ToolbarButton>
+            <ToolbarButton onClick={notImplemented} label="italic" className="bg-gray-100 hover:bg-white">
+              <span className="italic">I</span>
+            </ToolbarButton>
+            <ToolbarButton onClick={notImplemented} label="underline" className="bg-gray-100 hover:bg-white">
+              <span className="underline">U</span>
+            </ToolbarButton>
 
-        {/* Formatting buttons */}
-        <ToolbarButton onClick={notImplemented} label="bold" className="bg-white shadow-sm">
-          <span className="font-semibold">B</span>
-        </ToolbarButton>
-        <ToolbarButton onClick={notImplemented} label="italic" className="bg-white shadow-sm">
-          <span className="italic">I</span>
-        </ToolbarButton>
-        <ToolbarButton onClick={notImplemented} label="underline" className="bg-white shadow-sm">
-          <span className="underline">U</span>
-        </ToolbarButton>
-        <ToolbarButton onClick={notImplemented} label="unordered list" className="bg-white shadow-sm">
-          <div className="flex items-center gap-1">
-            <span className="h-1.5 w-1.5 rounded-full bg-current" />
-            <span className="h-0.5 w-4 bg-current" />
-          </div>
-          <div className="flex items-center gap-1">
-            <span className="h-1.5 w-1.5 rounded-full bg-current" />
-            <span className="h-0.5 w-4 bg-current" />
-          </div>
-        </ToolbarButton>
-        <ToolbarButton onClick={notImplemented} label="ordered list" className="bg-white shadow-sm">
-          <div className="flex items-center gap-1">
-            <span className="text-[11px]">1.</span>
-            <span className="h-0.5 w-4 bg-current" />
-          </div>
-          <div className="flex items-center gap-1">
-            <span className="text-[11px]">2.</span>
-            <span className="h-0.5 w-4 bg-current" />
-          </div>
-        </ToolbarButton>
+            <div className="border-t sm:border-t-0 sm:border-s border-gray-300 "></div>
+            
+            <ToolbarButton onClick={notImplemented} label="unordered list" className="bg-gray-100 hover:bg-white">
+            <ListBulletedIcon/>
+            </ToolbarButton>
+            <ToolbarButton onClick={notImplemented} label="ordered list" className="bg-gray-100 hover:bg-white">
+              <ListNumberedIcon/>
+            </ToolbarButton>
 
-        {/* Code */}
-        <ToolbarButton onClick={notImplemented} label="code" className="bg-white shadow-sm">
-          <span className="font-mono text-xs">{'<>'}</span>
-        </ToolbarButton>
+            <div className="border-t sm:border-t-0 sm:border-s border-gray-300 "></div>
+
+            <ToolbarButton onClick={notImplemented} label="code" className="bg-gray-100 hover:bg-white">
+              <QuotesIcon/>
+            </ToolbarButton>
+            {/* Code */}
+            <ToolbarButton onClick={notImplemented} label="code" className="bg-gray-100 hover:bg-white">
+              <span className="font-mono text-xs">{'<>'}</span>
+            </ToolbarButton>
+        </div>
 
         {/* Spacer */}
         <div className="ml-auto flex items-center gap-2">
@@ -123,7 +122,7 @@ export default function CreateFeed({ feedItems, setFeedItems }: Props) {
       </div>
 
       {/* Input area */}
-      <div className="flex items-start gap-2 rounded-2xl border border-slate-200 bg-white px-3 py-2 focus-within:ring-2 focus-within:ring-slate-200">
+      <div className="flex items-start mx-[-12px] gap-2 bg-white px-3 py-2 border-b-2 border-slate-200">
         {/* Left emoji inside input */}
         <div className="grid h-7 w-7 place-items-center rounded-full bg-yellow-100 ring-1 ring-black/5">
           <span className="text-lg">😊</span>
