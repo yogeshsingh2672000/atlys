@@ -7,14 +7,16 @@ type FooterIconProps = {
     label: string
 } & React.HTMLAttributes<HTMLButtonElement>
 
-export default function FooterIcon({ children, onClick, label, ...rest }: FooterIconProps) {
+export default function FooterIcon({ children, onClick, label, className = '', ...rest }: FooterIconProps) {
   const { requireAuth } = useAuthGate()
+  const base = 'cursor-pointer grid place-items-center active:scale-95 transition'
   return (
     <button
       {...rest}
       onClick={(e) => requireAuth(() => onClick?.(e))}
-      className="cursor-pointer h-9 w-9 rounded-full text-slate-600 ring-1 ring-slate-200 hover:bg-slate-100 grid place-items-center active:scale-95 transition"
+      className={`${base} ${className}`}
       title={label}
+      aria-label={label}
     >
       {children}
     </button>

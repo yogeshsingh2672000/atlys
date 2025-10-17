@@ -21,7 +21,7 @@ export default function FeedCard({ avatarUrl, author, timeAgo, text }: FeedCardP
 
   return (
     <div className="w-full max-w-[720px] rounded-xl bg-gray-50 px-2 pt-2 pb-4 transition-all duration-200 hover:shadow-xl">
-      <div className="bg-white rounded-xl p-2 bg-gray-100">
+      <div className="bg-white rounded-xl p-2 bg-gray-100 border border-gray-100">
         <div >
           <div className='flex gap-3'>
             <Avatar src={avatarUrl} alt={author} />
@@ -43,22 +43,24 @@ export default function FeedCard({ avatarUrl, author, timeAgo, text }: FeedCardP
       </div>
       <div className="mt-4 flex items-center gap-2">
         <IconButton ariaLabel="like" onClick={notImplemented}>
-          {/* heart */}
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z" />
+          {/* heart outline (rounded) */}
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M20.84 4.61c-1.86-1.86-4.88-1.86-6.74 0L12 6.67l-2.1-2.06c-1.86-1.86-4.88-1.86-6.74 0-1.86 1.86-1.86 4.88 0 6.74L12 21l8.84-9.52c1.86-1.86 1.86-4.88 0-6.87z"/>
           </svg>
         </IconButton>
         <IconButton ariaLabel="comment" onClick={notImplemented}>
-          {/* comment bubble */}
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 15a4 4 0 0 1-4 4H7l-4 4V5a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10z" />
+          {/* rounded chat bubble with two lines */}
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M7 20l-3 2v-4a8 8 0 0 1-2-5.5C2 7.47 5.58 4 10 4h4c4.42 0 8 3.47 8 8s-3.58 8-8 8H7z"/>
+            <path d="M8.5 10.75h7"/>
+            <path d="M8.5 14h5"/>
           </svg>
         </IconButton>
         <IconButton ariaLabel="send" onClick={notImplemented}>
-          {/* send */}
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M22 2L11 13" />
-            <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+          {/* paper plane */}
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M22 2 11 13"/>
+            <path d="M22 2 15 22l-4-9-9-4 20-7z"/>
           </svg>
         </IconButton>
       </div>

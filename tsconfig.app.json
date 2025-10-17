@@ -29,7 +29,8 @@
       "@ui/*": ["src/ui/*"],
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
-      "@data/*": ["src/data/*"]
+      "@data/*": ["src/data/*"],
+      "@svgs/*": ["src/components/svgs/*"]
     }
   },
   "include": ["src"]

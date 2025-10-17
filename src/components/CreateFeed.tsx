@@ -2,6 +2,9 @@ import React, { useMemo, useState } from 'react'
 import { useAuthGate } from '@components/AuthGate'
 import ToolbarButton from '@ui/ToolbarButton'
 import FooterIcon from '@ui/FooterIcon'
+import UploadIcon from '@svgs/Upload'
+import MicIcon from '@svgs/MicIcon'
+import VideoIcon from '@svgs/VideoIcon'
 
 type FeedItem = {
   id: number
@@ -53,22 +56,22 @@ export default function CreateFeed({ feedItems, setFeedItems }: Props) {
         {/* Paragraph dropdown */}
         <button
           onClick={notImplemented}
-          className="cursor-pointer h-9 rounded-lg border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 hover:bg-slate-50 active:scale-[0.98] transition"
+          className="cursor-pointer h-9 rounded-lg border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 hover:bg-slate-50 active:scale-[0.98] transition shadow-sm"
         >
           Paragraph ▾
         </button>
 
         {/* Formatting buttons */}
-        <ToolbarButton onClick={notImplemented} label="bold">
-          <b>B</b>
+        <ToolbarButton onClick={notImplemented} label="bold" className="bg-white shadow-sm">
+          <span className="font-semibold">B</span>
         </ToolbarButton>
-        <ToolbarButton onClick={notImplemented} label="italic">
-          <i>I</i>
+        <ToolbarButton onClick={notImplemented} label="italic" className="bg-white shadow-sm">
+          <span className="italic">I</span>
         </ToolbarButton>
-        <ToolbarButton onClick={notImplemented} label="underline">
-          <u>U</u>
+        <ToolbarButton onClick={notImplemented} label="underline" className="bg-white shadow-sm">
+          <span className="underline">U</span>
         </ToolbarButton>
-        <ToolbarButton onClick={notImplemented} label="unordered list">
+        <ToolbarButton onClick={notImplemented} label="unordered list" className="bg-white shadow-sm">
           <div className="flex items-center gap-1">
             <span className="h-1.5 w-1.5 rounded-full bg-current" />
             <span className="h-0.5 w-4 bg-current" />
@@ -78,7 +81,7 @@ export default function CreateFeed({ feedItems, setFeedItems }: Props) {
             <span className="h-0.5 w-4 bg-current" />
           </div>
         </ToolbarButton>
-        <ToolbarButton onClick={notImplemented} label="ordered list">
+        <ToolbarButton onClick={notImplemented} label="ordered list" className="bg-white shadow-sm">
           <div className="flex items-center gap-1">
             <span className="text-[11px]">1.</span>
             <span className="h-0.5 w-4 bg-current" />
@@ -90,25 +93,31 @@ export default function CreateFeed({ feedItems, setFeedItems }: Props) {
         </ToolbarButton>
 
         {/* Code */}
-        <ToolbarButton onClick={notImplemented} label="code">
+        <ToolbarButton onClick={notImplemented} label="code" className="bg-white shadow-sm">
           <span className="font-mono text-xs">{'<>'}</span>
         </ToolbarButton>
 
         {/* Spacer */}
         <div className="ml-auto flex items-center gap-2">
           {/* Count box */}
-          <div className="h-8 min-w-10 rounded-lg border border-slate-200 bg-white px-2 text-sm text-slate-600 grid place-items-center">
+          <div className="h-8 min-w-10 rounded-lg border border-slate-200 bg-white px-2 text-sm text-slate-600 grid place-items-center shadow-sm">
             {charCount}
           </div>
 
           {/* Trash */}
           <button
             onClick={notImplemented}
-            className="cursor-pointer h-8 w-8 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 active:scale-95 grid place-items-center transition"
+            className="cursor-pointer h-9 w-9 rounded-lg bg-rose-100 text-rose-600 hover:bg-rose-200 active:scale-95 grid place-items-center transition shadow-sm"
             aria-label="delete"
             title="delete"
           >
-            🗑️
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 6h18"/>
+              <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+              <path d="M10 11v6"/>
+              <path d="M14 11v6"/>
+            </svg>
           </button>
         </div>
       </div>
@@ -129,25 +138,34 @@ export default function CreateFeed({ feedItems, setFeedItems }: Props) {
 
       {/* Footer actions */}
       <div className="mt-2 flex items-center justify-between px-1">
-        <div className="flex items-center gap-2">
-          <FooterIcon onClick={notImplemented} label="add">
-            +
+        <div className="flex items-center gap-3">
+          {/* Add button in rounded square with subtle bg */}
+          <FooterIcon onClick={notImplemented} label="add" className="h-9 w-9 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200">
+            <UploadIcon/>
           </FooterIcon>
-          <FooterIcon onClick={notImplemented} label="voice">
-            🎤
+
+          {/* Microphone outline */}
+          <FooterIcon onClick={notImplemented} label="voice" className="h-9 w-9 rounded-[10px] text-slate-600 hover:bg-slate-100">
+            <MicIcon/>
           </FooterIcon>
-          <FooterIcon onClick={notImplemented} label="attach">
-            📎
+
+          {/* Rounded square clip icon */}
+          <FooterIcon onClick={notImplemented} label="attach" className="h-9 w-9 rounded-[10px] rotate-90 text-slate-600 hover:bg-slate-100">
+            <VideoIcon/>
           </FooterIcon>
         </div>
 
         <button
           onClick={() => requireAuth(onSend)}
           disabled={!text.trim()}
-          className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-4 py-2 text-white shadow hover:bg-indigo-700 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed transition"
+          className="cursor-pointer inline-flex items-center justify-center hover:bg-slate-200 rounded-full pl-3 p-2 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed transition"
+          aria-label="send"
+          title="Send"
         >
-          <span>Send</span>
-          <span className="text-base">➤</span>
+          {/* solid paper plane icon to match reference */}
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="rgb(79 70 229)" aria-hidden="true">
+            <path d="M2.94 3.32a.9.9 0 0 1 1.02-.14l17.7 8.04a.9.9 0 0 1 0 1.64l-17.7 8.04a.9.9 0 0 1-1.24-1.05l2.27-7.38c.08-.27.29-.49.56-.57L13.2 12 6.55 9.1a.9.9 0 0 1-.56-.57L2.72 4.37a.9.9 0 0 1 .22-.99z"/>
+          </svg>
         </button>
       </div>
     </div>
