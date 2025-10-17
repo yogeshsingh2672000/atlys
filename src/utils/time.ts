@@ -3,7 +3,9 @@ export function formatTimeAgo(epochMs: number): string {
   const diff = Math.max(0, now - epochMs)
 
   const sec = Math.floor(diff / 1000)
-  if (sec < 60) return `${sec || 1} seconds ago`
+  if (sec < 15) return `just now`
+
+  if (sec < 60) return `${sec} seconds ago`
 
   const min = Math.floor(sec / 60)
   if (min < 60) return `${min} ${min === 1 ? 'minute' : 'minutes'} ago`
