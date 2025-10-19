@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuthGate } from '@components/AuthGate'
-import Logo from './svgs/Logo'
+import Logo from '@svgs/Logo'
+import ls from '@utils/localstorage'
 
 type Props = {
   fixed?: boolean 
@@ -9,6 +10,14 @@ type Props = {
 export default function Header({ fixed = false }: Props) {
   const { isAuthed } = useAuthGate()
   const positionClass = fixed ? 'fixed' : 'sticky'
+  const router = useNavigate()
+
+  const logout = () => {
+    ls.remove('auth:user')
+    window.dispatchEvent(new Event('auth:changed'))
+    router('/login')
+  }
+
   return (
     <>
       <header
@@ -24,7 +33,7 @@ export default function Header({ fixed = false }: Props) {
           </Link>
 
           {/* Right actions */}
-          {!isAuthed && (
+          {isAuthed ? <div onClick={logout} className="cursor-pointer text-sm font-medium" >Logout</div> : (
             <Link to="/login" className="group inline-flex items-center text-slate-800 hover:text-slate-900">
               <span className="text-sm font-medium">Login</span>
               <span className="grid h-7 w-6 place-items-center">

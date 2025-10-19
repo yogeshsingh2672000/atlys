@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import AuthCard from '@components/AuthCard'
 import Input from '@ui/Input'
 import Button from '@ui/Button'
-import { Link, useNavigate } from 'react-router-dom'
+import ls from '@utils/localstorage'
 
 export default function Signup() {
   const [name, setName] = useState('')
@@ -46,7 +47,7 @@ export default function Signup() {
     }
 
     const user = { name, email }
-    localStorage.setItem('auth:user', JSON.stringify(user))
+    ls.set('auth:user', JSON.stringify(user))
     window.dispatchEvent(new Event('auth:changed'))
     navigate('/', { replace: true })
   }

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import AuthCard from '@components/AuthCard'
 import Input from '@ui/Input'
 import Button from '@ui/Button'
-import { Link, useNavigate } from 'react-router-dom'
+import ls from '@utils/localstorage'
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -18,7 +19,7 @@ export default function Login() {
 
   function loadUsers(): Array<{ email: string; password: string; name?: string }> {
     try {
-      const raw = sessionStorage.getItem('auth:users')
+      const raw = ls.get('auth:users')
       return raw ? JSON.parse(raw) : []
     } catch {
       return []
@@ -54,7 +55,7 @@ export default function Login() {
     }
 
     const user = { email: isDemo ? 'demo@example.com' : match?.email, name: match?.name }
-    localStorage.setItem('auth:user', JSON.stringify(user))
+    ls.set('auth:user', JSON.stringify(user))
     window.dispatchEvent(new Event('auth:changed'))
     navigate('/', { replace: true })
   }
