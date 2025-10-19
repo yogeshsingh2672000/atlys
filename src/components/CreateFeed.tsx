@@ -5,9 +5,9 @@ import FooterIcon from '@ui/FooterIcon'
 import UploadIcon from '@svgs/Upload'
 import MicIcon from '@svgs/MicIcon'
 import VideoIcon from '@svgs/VideoIcon'
-import ListBulletedIcon from './svgs/ListBulletedIcon'
-import ListNumberedIcon from './svgs/ListNumberedIcon'
-import QuotesIcon from './svgs/QuotesIcon'
+import ListBulletedIcon from '@svgs/ListBulletedIcon'
+import ListNumberedIcon from '@svgs/ListNumberedIcon'
+import QuotesIcon from '@svgs/QuotesIcon'
 
 type FeedItem = {
   id: number

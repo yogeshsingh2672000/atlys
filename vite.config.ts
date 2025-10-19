@@ -14,6 +14,7 @@ export default defineConfig({
       '@data': path.resolve(__dirname, 'src/data'),
       '@svgs': path.resolve(__dirname, 'src/components/svgs'),
       '@utils': path.resolve(__dirname, 'src/utils'),
+      '@lib': path.resolve(__dirname, 'src/lib'),
     }
   }
 })

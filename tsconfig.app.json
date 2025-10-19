@@ -31,7 +31,8 @@
       "@pages/*": ["src/pages/*"],
       "@data/*": ["src/data/*"],
       "@svgs/*": ["src/components/svgs/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@lib/*": ["src/lib/*"]
     }
   },
   "include": ["src"]

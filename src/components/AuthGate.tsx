@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 type AuthGateContextValue = {
   isAuthed: boolean
@@ -60,7 +61,9 @@ function AuthModal({ onClose }: { onClose: () => void }) {
         <h2 className="text-lg font-semibold text-slate-900">Please log in</h2>
         <p className="mt-2 text-sm text-slate-600">You need to be logged in to use this action.</p>
         <div className="mt-4 flex justify-end gap-2">
-          <a href="/login" className="inline-flex items-center rounded-xl bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 active:scale-95 transition">Go to Login</a>
+            <Link to="/login" className="inline-flex items-center rounded-xl bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 active:scale-95 transition">
+                Go to Login
+            </Link>
           <button onClick={onClose} className="inline-flex items-center rounded-xl px-4 py-2 text-sm font-medium text-slate-700 ring-1 ring-slate-200 hover:bg-slate-100 active:scale-95 transition">Close</button>
         </div>
       </div>
